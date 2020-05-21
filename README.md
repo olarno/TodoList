@@ -17,10 +17,29 @@ Partie front : JS, bulma, forkAwesome
 
 - présentation simple :
 
+![index](/Documentation/Index.png)
+
 - categories de base : 
 
+![listOfCategory](/Documentation/categories.png)
 
 
+- Differents state des tasks :
+
+   **New** 
+![New](/Documentation/new_task.png)
+
+   **Edit**
+![Edit](/Documentation/edit_task.png)
+
+   **Complete**  
+![Complete](/Documentation/complete_task.png)
+
+   **Archive**
+![Archive](/Documentation/archive_task.png)****
 
 
+- Récap 
+
+![récap](/Documentation/Recap_state.png)
   
