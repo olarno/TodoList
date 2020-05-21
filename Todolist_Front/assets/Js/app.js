@@ -4,7 +4,7 @@ let app = {
     // apiURL ==> à modifier en cas de changement d'api 
     // taskStatusCodes ==> permet de gérer les different status de la task en css 
     //===================================================================================================
-      apiURL: 'http://localhost:8000/api/',
+    apiURL: 'http://localhost:8000/api/',
      taskStatusCodes:
       {
         1:

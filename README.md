@@ -13,6 +13,27 @@ technos : symfony, JS
 Partie back : API sous symfony  
 Partie front : JS, bulma, forkAwesome
 
+### Utilisation 
+
+Pour permettre la bonne execution de l'API : 
+- Soit lancé l'API sur un server : ``` symfony serve -d ```
+- Soit modifier l'url  ```apiURL: 'http://localhost:8000/api/',``` *ligne 7 du ``app.js``*
+
+### Avancement & problématique 
+
+*Back :*
+
+Probleme de Cors :heavy_check_mark: *(NelmioCors Bundle)*  
+Mise en place du crud pour les tasks :heavy_check_mark:  
+Mise en place du crud pour les categories :heavy_exclamation_mark:
+
+*Front :*
+
+DataModel, ne renvoi par la categorie :x:  
+Gestion des flash messages :heavy_exclamation_mark:
+
+
+
 ### Documentation 
 
 - présentation simple :
