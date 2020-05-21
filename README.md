@@ -36,7 +36,7 @@ Partie front : JS, bulma, forkAwesome
 ![Complete](/Documentation/complete_task.png)
 
    **Archive**
-![Archive](/Documentation/archive_task.png)****
+![Archive](/Documentation/archive_task.png)
 
 
 - Récap 
