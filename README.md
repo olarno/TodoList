@@ -25,11 +25,12 @@ Pour permettre la bonne execution de l'API :
 
 Probleme de Cors :heavy_check_mark: *(NelmioCors Bundle)*  
 Mise en place du crud pour les tasks :heavy_check_mark:  
-Mise en place du crud pour les categories :heavy_exclamation_mark:
+Mise en place du crud pour les categories :heavy_check_mark:
 
 *Front :*
 
-DataModel, ne renvoi par la categorie :x:  
+DataModel, ne renvoi par la categorie :heavy_check_mark:
+Integrer une temporisation pour laisse le temps de charger les categories :heavy_exclamation_mark:
 Gestion des flash messages :heavy_exclamation_mark:
 
 
