@@ -99,8 +99,7 @@ let app = {
                   app.tasks = task;
 
                   for (let taskIndex = 0; taskIndex < app.tasks.tasks.length; taskIndex++) {
-                    app.createTaskElement(app.tasks.tasks[taskIndex]);
-
+                    app.createTaskElement(app.tasks.tasks[taskIndex]);              
                   }
                 },
                 //===================================================================================================
@@ -131,7 +130,7 @@ let app = {
                 // ajout d'une nouvelle entrée dans le select du formulaire 
                   let addCategory = document.createElement('option');
                   addCategory.textContent = 'Ajouter une catégorie';
-                  addCategory.value = 0;
+                  addCategory.value = 'new';
                   app.selectForm.appendChild(addCategory);
                   app.selectForm.addEventListener('click', app.handleSelectForm);
                 },
@@ -171,16 +170,20 @@ let app = {
                 // Fonction pour l'affichage des tasks non archivées 
                 //==================================================================================================
                 displayTasks: function(event) {
+                
                   app.listTaskArchived.classList.replace('hidden', 'visible');
                   app.listTasks.classList.replace('visible', 'hidden');
                   //on selectionne les tasks '--archive'
                   app.allTasks = document.querySelectorAll('.task:not(.task--add');
                   for (let taskIndex = 0; taskIndex < app.allTasks.length; taskIndex++) {
+                    console.log(app.allTasks);
                     //on passe en display 'none' les tasks
-                    app.allTasks[taskIndex].setAttribute('style', 'display:;');
+                    app.allTasks[taskIndex].setAttribute('style', 'display:block;');
+                    if (app.allTasks[taskIndex].classList.contains('cat--add') === true)
+                    app.allTasks[taskIndex].setAttribute('style', 'display:none;');
                     //on fait passer en 'block' les task '--archive'
                     if (app.allTasks[taskIndex].classList.contains('task--archive') === true)
-                      app.allTasks[taskIndex].setAttribute('style', 'display:;');
+                    app.allTasks[taskIndex].setAttribute('style', 'display:none;');
                   }
                 },
     
@@ -260,8 +263,8 @@ let app = {
                 // Funciton pour l'affichage du formulaire d'ajout d'une catégorie 
                 //===================================================================================================
                 handleSelectForm: function(event) {
-                 // console.log(event.currentTarget.value);
-                  if(event.currentTarget.value == 0)
+                 
+                  if(event.currentTarget.value == 'new')
                   {
                     app.catAddForm.setAttribute('style', 'display:block;');
                     app.submitButtonTask.disabled = true;
@@ -281,6 +284,7 @@ let app = {
     
                   let category = {
                     'name': app.catAddFormNameInput.value,
+                    'status': 1,
                   };
                   let fetchOption = {
                     method: 'POST',
@@ -288,14 +292,14 @@ let app = {
                     body: JSON.stringify(category)
                   };
     
-                  fetch(app.apiURL + '/category', fetchOption)
+                  fetch(app.apiURL + 'categories/', fetchOption)
                     .then(function(response) {
                       return response.json();   
                     })
                     .then(function(json) {
-                      // console.log(json);
+                       console.log(json);
                       // si json id existe c'est que l'on crée une tache 
-                      if ( typeof json.id !== 'undefined')
+                      if ( typeof json.categories.id !== 'undefined')
                       {
                         console.log(json);
                         app.catAddForm.setAttribute('style', 'display:none;');
@@ -338,8 +342,6 @@ let app = {
                   // categoryName
                   let category = app.getCategoryById(task.category);
 
-               
-    
                   let taskCategory = newTaskElement.querySelector('.task__content__category > p');
                   taskCategory.textContent = category.name;
     
@@ -348,7 +350,8 @@ let app = {
                   // taskCategory.textContent = selectedOption.textContent;
     
                   // Dataset
-                  newTaskElement.dataset.category = task.category_id;
+       
+                  newTaskElement.dataset.category = task.category.id;
                   newTaskElement.dataset.id = task.id;
                   newTaskElement.dataset.title = task.title;
                   newTaskElement.dataset.completion = task.completion;
@@ -440,11 +443,14 @@ let app = {
     
                   let newTitle = event.currentTarget.value;
                   let taskId = taskElement.dataset.id;
+  
                   
+
                   let task = {
                     title: newTitle,
                     completion: taskElement.dataset.completion,
-                    status: 1
+                    status: 1,
+                    category: taskElement.dataset.category
                   };
     
                 let fetchOption = {
@@ -478,7 +484,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 0,
-                    status: 1
+                    status: 1,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -516,7 +523,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 2
+                    status: 2,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -557,7 +565,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 4
+                    status: 4,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -593,7 +602,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 4
+                    status: 4,
+                    category: taskElement.dataset.category
                   };
 
                 let fetchOption = {
@@ -625,7 +635,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 2
+                    status: 2,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -644,10 +655,7 @@ let app = {
                       progressBar.style.width = task.completion + '%';
                     });
                 },
-    
-    };
-    
-    
-    
+};  
+        
     //========== Lancement de l'app ==========//
     app.init();
