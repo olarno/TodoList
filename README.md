@@ -29,7 +29,7 @@ Mise en place du crud pour les categories :heavy_check_mark:
 
 *Front :*
 
-DataModel, ne renvoi par la categorie :heavy_check_mark:
+DataModel, ne renvoi par la categorie :heavy_check_mark:  
 Integrer une temporisation pour laisse le temps de charger les categories :heavy_exclamation_mark:
 Gestion des flash messages :heavy_exclamation_mark:
 
