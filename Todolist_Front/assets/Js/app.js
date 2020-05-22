@@ -281,6 +281,7 @@ let app = {
     
                   let category = {
                     'name': app.catAddFormNameInput.value,
+                    'status' : 1
                   };
                   let fetchOption = {
                     method: 'POST',
@@ -288,14 +289,14 @@ let app = {
                     body: JSON.stringify(category)
                   };
     
-                  fetch(app.apiURL + '/category', fetchOption)
+                  fetch(app.apiURL + 'categories/', fetchOption)
                     .then(function(response) {
                       return response.json();   
                     })
                     .then(function(json) {
-                      // console.log(json);
+                       console.log(json);
                       // si json id existe c'est que l'on crée une tache 
-                      if ( typeof json.id !== 'undefined')
+                      if ( typeof json.categories.id !== 'undefined')
                       {
                         console.log(json);
                         app.catAddForm.setAttribute('style', 'display:none;');
@@ -336,6 +337,7 @@ let app = {
                   taskTitleInputElement.value = task.title;
    
                   // categoryName
+                  
                   let category = app.getCategoryById(task.category);
 
                
@@ -347,8 +349,9 @@ let app = {
                   // let selectedOption = app.taskAddFormCategorySelect.querySelector('option:checked');
                   // taskCategory.textContent = selectedOption.textContent;
     
+                
                   // Dataset
-                  newTaskElement.dataset.category = task.category_id;
+                  newTaskElement.dataset.category = task.category.id;
                   newTaskElement.dataset.id = task.id;
                   newTaskElement.dataset.title = task.title;
                   newTaskElement.dataset.completion = task.completion;
@@ -396,6 +399,7 @@ let app = {
                 //===================================================================================================
                 getCategoryById: function(categoryId) {
 
+               
                   for (let categoryIndex = 0; categoryIndex < app.categoriesListing.length; categoryIndex++) {
                       if (categoryId.id === app.categoriesListing[categoryIndex].id) {
                       return app.categoriesListing[categoryIndex];
@@ -444,7 +448,8 @@ let app = {
                   let task = {
                     title: newTitle,
                     completion: taskElement.dataset.completion,
-                    status: 1
+                    status: 1,
+                    category: taskElement.dataset.category
                   };
     
                 let fetchOption = {
@@ -478,7 +483,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 0,
-                    status: 1
+                    status: 1,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -516,7 +522,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 2
+                    status: 2,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -557,7 +564,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 4
+                    status: 4,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
@@ -593,7 +601,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 4
+                    status: 4,
+                    category: taskElement.dataset.category
                   };
 
                 let fetchOption = {
@@ -625,7 +634,8 @@ let app = {
                   let task = {
                     title: taskTitle,
                     completion: 100,
-                    status: 2
+                    status: 2,
+                    category: taskElement.dataset.category
                   };
     
                   let fetchOption = {
