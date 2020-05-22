@@ -50,6 +50,7 @@ class Categories
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->tasks = new ArrayCollection();
     }
 

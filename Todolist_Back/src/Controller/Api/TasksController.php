@@ -5,12 +5,11 @@ namespace App\Controller\Api;
 use App\Entity\Tasks;
 use App\Form\TaskType;
 use App\Repository\TasksRepository;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 /**
      * @Route("/api/tasks", name="api_tasks_")
