@@ -25,7 +25,9 @@ Pour permettre la bonne execution de l'API :
 
 Probleme de Cors :heavy_check_mark: *(NelmioCors Bundle)*  
 Mise en place du crud pour les tasks :heavy_check_mark:  
-Mise en place du crud pour les categories :heavy_check_mark:
+Mise en place du crud pour les categories :heavy_check_mark:  
+Gestion des filtres (toutes/completes/incompletes) :heavy_exclamation_mark:  
+Gestion des affichage en fonction des categorie :heavy_exclamation_mark:
 
 *Front :*
 
